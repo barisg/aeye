@@ -43,6 +43,7 @@ def sign_s3():
     AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY')
     AWS_SECRET_KEY = os.environ.get('AWS_SECRET_KEY')
     S3_BUCKET = os.environ.get('S3_BUCKET')
+    print AWS_ACCESS_KEY
 
     object_name = urllib.quote_plus(request.args.get('file_name'))
     print object_name
