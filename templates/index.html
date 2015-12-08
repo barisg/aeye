@@ -11,11 +11,10 @@
 <h2>Or enter the URL</h2>
 
 <form method="POST" action="/submit_form/">
-    <!-- <input type="hidden" id="image_url" name="image_url" value="/static/media/default.png" /> -->
-    <input type="text" name="image_url" placeholder="Image URL" /><br />    
+    <input type="hidden" id="file_url" name="file_url" />
+    <input type="text" name="image_url" placeholder="Image URL" />    
 
-<p>
-    <input type="submit" value="Perform magic!" />
+    <input type="submit" value="Upload from URL" />
 </form>
 
 
@@ -30,8 +29,7 @@ function upload_file(file, signed_request, url){
     xhr.setRequestHeader('x-amz-acl', 'public-read');
     xhr.onload = function() {
         if (xhr.status === 200) {
-            document.getElementById("preview").src = url;            
-            document.getElementById("image_url").value = url;
+            document.getElementById("file_url").value = url;
         }
     };
     xhr.onerror = function() {
