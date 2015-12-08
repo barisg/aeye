@@ -4,4 +4,5 @@ import urllib
 import urllib2
 
 def recognize_image(url):
-    return '42'
+    # return '42'
+    return url

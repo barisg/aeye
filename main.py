@@ -30,19 +30,30 @@ def api_response_param():
 def hello():
     return 'Hello World!'
     
+# Web interface
 
 @app.route('/')
 @app.route('/index.html')
 def index():
     return render_template('index.html')
+
+
+
+@app.route("/submit_form/", methods=["POST"])
+def submit_form():
+    print 'in submit form'
+    image_url = request.form["image_url"]
+    return jsonify(response=recognize_image(image_url))
     
+        
+# Amazon upload
         
 @app.route('/sign_s3/')
 def sign_s3():
     print 'in sign s3'
-    AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY')
-    AWS_SECRET_KEY = os.environ.get('AWS_SECRET_KEY')
-    S3_BUCKET = os.environ.get('S3_BUCKET')
+    AWS_ACCESS_KEY = os.environ.get('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+    S3_BUCKET = os.environ.get('S3_BUCKET_NAME')
     print AWS_ACCESS_KEY
 
     object_name = urllib.quote_plus(request.args.get('file_name'))
@@ -71,11 +82,7 @@ def sign_s3():
     return content
 
 
-@app.route("/submit_form/", methods=["POST"])
-def submit_form():
-    print 'in submit form'
-    image_url = request.form["image_url"]
-    return jsonify(response=recognize_image(image_url))
+
     
 
 if __name__ == '__main__':
