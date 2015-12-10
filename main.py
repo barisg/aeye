@@ -44,7 +44,7 @@ def submit_form():
     
         
 # Amazon upload
-@ap.route('/s3test/')
+@app.route('/s3test/')
     s3 = boto3.resource('s3')
     buckets = []
     for bucket in s3.buckets.all():
