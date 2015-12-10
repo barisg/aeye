@@ -1,4 +1,0 @@
-scipy==0.14.0
-scikit-learn
-scikit-image
-nltk
