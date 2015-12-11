@@ -19,9 +19,7 @@ def api_response(image_url):
 
 @app.route('/api/', methods=['GET'])
 def api_response_param():
-    all_args = request.args.lists()
-
-    return api_response(str(all_args[0][0]))
+    return api_response(request.args.get('url'))
 
     
 @app.route('/hello')
